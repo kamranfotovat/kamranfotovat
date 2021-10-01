@@ -7,7 +7,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
-              <a class="navbar-brand xxlarge" >Barca!</a>
+              <a class="navbar-brand xxlarge blue" id="blink">Barca!</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -31,6 +31,24 @@
           </nav>
         <title>Barca!</title>
         <link href="static/style.css" rel="stylesheet">
+
+        <script>
+          function blink()
+            {
+                let body = document.querySelector('#blink')
+                if (body.style.visibility == 'hidden')
+                {
+                    body.style.visibility = 'visible';
+                }
+                else
+                {
+                    body.style.visibility = 'hidden';
+                }
+            }
+
+            // Blink every 500ms
+            window.setInterval(blink, 500);
+        </script>
     </head>
     <body>
         {% block body %}
