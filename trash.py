@@ -4,3 +4,5 @@ print(n+14)
 print(n)
 print("beeeeb")
 print("roja vs tiam")
+for i in range(4):
+    print(1 + 3)
