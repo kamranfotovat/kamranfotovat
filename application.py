@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("login.html")
 
 
 @app.route("/login", methods=["POST","GET"])
@@ -17,3 +17,4 @@ def login():
 
     if request.method == "get":
         return render_template("login.html")
+        
