@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("login.html")
 
 
 @app.route("/login", methods=["POST","GET"])
@@ -26,7 +26,7 @@ def login():
             pass
 
 
-    if request.method == "get":
+    else:
         return render_template("login.html")
 
 @app.route("/register", methods=["POST","GET"])
@@ -49,9 +49,5 @@ def register():
         if password != confirmation:
             pass
 
-
-
-
-
-    if request.method == "get":
+    else:
         return render_template("register.html")
