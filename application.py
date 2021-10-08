@@ -9,6 +9,14 @@ from flask_session import Session
 
 app = Flask(__name__)
 
+app.config["TEMPLATES_AUTO_RELOAD"] = True
+
+@app.after_request
+def after_request(response):
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Expires"] = 0
+    response.headers["Pragma"] = "no-cache"
+    return response
 
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
@@ -18,9 +26,31 @@ Session(app)
 db = SQL("sqlite:///barca.db")
 
 @app.route("/")
-
+@login_required
 def index():
-    return render_template("register.html")
+    return render_template("index.html")
+
+
+@app.route("/login", methods=["POST","GET"])
+def login():
+
+    session.clear()
+
+    if request.method == "POST":
+
+        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
+
+        # Ensure username exists and password is correct
+        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
+            return render_template("test1.html")
+
+        # Remember which user has logged in
+        session["user_id"] = rows[0]["id"]
+        return redirect("/")
+
+    else:
+        return render_template("login.html")
+
 
 
 @app.route("/register", methods=["POST","GET"])
@@ -29,15 +59,19 @@ def register():
 
         name = request.form.get("username")
         password = request.form.get("password")
+        pshash = generate_password_hash(password)
+
 
 
         try:
-            db.execute("INSERT INTO users (username, password) VALUES (?, ?)", name, password)
+            db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", name, pshash)
         except:
             return render_template("test1.html")
 
 
-        return render_template("test.html")
+        return redirect("/login")
 
     else:
         return render_template("register.html")
+
+

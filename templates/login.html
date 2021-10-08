@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Log in</title>
+        <title>Sign up!</title>
         <style>
             body {
               background-image: url('https://hdwallpaperim.com/wp-content/uploads/2017/08/27/144722-Barcelona-FC_Barcelona-stadium-Camp_Nou.jpg');
@@ -143,8 +143,8 @@
     </head>
     <body>
       <div class="login-form">
-        <form action="/login" method="post">
-          <h1>Login</h1>
+        <form action="/login" method="POST">
+          <h1>Sign up</h1>
           <div class="form-group">
             <input type="text" autocomplete="off" name="username" placeholder="Username">
             <span class="input-icon"><i class="fa fa-envelope"></i></span>
@@ -153,10 +153,10 @@
             <input type="password"  autocomplete="off" name="password" placeholder="Password">
             <span class="input-icon"><i class="fa fa-lock"></i></span>
           </div>
-          <input type="submit" value="Log in">
+          <button class="login-btn">Log in</button>
 
           <div class="seperator"><b>or</b></div>
-          <a class="reset-psw" href="/register">Don't have an account? sign up here!</a>
+          <a class="reset-psw" href="/register">Don't have an account? Create one!</a>
         </form>
       </div>
 
