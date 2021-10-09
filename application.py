@@ -38,6 +38,15 @@ def login():
 
     if request.method == "POST":
 
+        name = request.form.get("username")
+        password = request.form.get("password")
+
+        if not name:
+            return render_template("test1.html")
+        elif not password:
+            return render_template("test1.html")
+
+
         rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
 
         # Ensure username exists and password is correct
@@ -60,8 +69,16 @@ def register():
         name = request.form.get("username")
         password = request.form.get("password")
         pshash = generate_password_hash(password)
+        confirm = request.form.get("confirmation")
 
-
+        if not name:
+            return render_template("test1.html")
+        elif not password:
+            return render_template("test1.html")
+        elif not confirm:
+            return render_template("test1.html")
+        elif confirm != password:
+            return render_template("test1.html")
 
         try:
             db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", name, pshash)
@@ -75,3 +92,7 @@ def register():
         return render_template("register.html")
 
 
+
+@app.route("/quiz", methods=["POST","GET"])
+def quiz():
+    return render_template("quiz.html")
