@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>for god sake pls work</title>
+        <script>
+        score = 0;
+
+        function increse() {
+            score =+ 1;
+        </script>
+    </head>
+    <body>
+        <h3>which one is the 'GAME OF THE YEAR' in 2020 ???</h3>
+        <h1 id="beeb"></h1>
+        <button id="num1">Hades</button>
+        <button id="num2">Call Of Duty: Cold War</button>
+        <button id="num3">The Last Of Us: Part 2</button>
+        <button id="num4">Ghost Of Tsushima</button>
+        <h4 id="score1"></h4>
+
+
+        <script>
+
+            var score = 0;
+
+            function increase() {
+                score += 1
+            }
+
+
+
+            document.querySelector('#num1').onclick = function() {
+                document.querySelector('#num1').style.background = "red";
+                document.querySelector('#num2').style.background = "white";
+                document.querySelector('#num3').style.background = "white";
+                document.querySelector('#num4').style.background = "white";
+                document.getElementById("score1").innerHTML = score;
+            };
+
+            document.querySelector('#num2').onclick = function() {
+                document.querySelector('#num1').style.background = "white";
+                document.querySelector('#num2').style.background = "red";
+                document.querySelector('#num3').style.background = "white";
+                document.querySelector('#num4').style.background = "white";
+                document.getElementById("score1").innerHTML = score;
+            };
+
+            document.querySelector('#num3').onclick = function() {
+                document.querySelector('#num1').style.background = "white";
+                document.querySelector('#num2').style.background = "white";
+                document.querySelector('#num3').style.background = "green";
+                document.querySelector('#num4').style.background = "white";
+                increase();
+                document.getElementById("score1").innerHTML = score;
+            };
+
+            document.querySelector('#num4').onclick = function() {
+                document.querySelector('#num1').style.background = "white";
+                document.querySelector('#num2').style.background = "white";
+                document.querySelector('#num3').style.background = "white";
+                document.querySelector('#num4').style.background = "red";
+                document.getElementById("score1").innerHTML = score;
+            };
+
+        </script>
+    </body>
+</html>
