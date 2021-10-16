@@ -11,56 +11,65 @@
     </head>
     <body>
         <h3>which one is the 'GAME OF THE YEAR' in 2020 ???</h3>
-        <h1 id="beeb"></h1>
         <button id="num1">Hades</button>
         <button id="num2">Call Of Duty: Cold War</button>
         <button id="num3">The Last Of Us: Part 2</button>
         <button id="num4">Ghost Of Tsushima</button>
         <h4 id="score1"></h4>
+        <h4 id="score2"></h4>
 
 
         <script>
 
-            var score = 0;
+            let score = 0;
 
             function increase() {
                 score += 1
             }
 
 
+            let question_number = 0;
+
+            function question_num_increase() {
+                question_number += 1;
+            }
+
 
             document.querySelector('#num1').onclick = function() {
-                document.querySelector('#num1').style.background = "red";
-                document.querySelector('#num2').style.background = "white";
-                document.querySelector('#num3').style.background = "white";
-                document.querySelector('#num4').style.background = "white";
-                document.getElementById("score1").innerHTML = score;
-            };
+                if(question_number < 1) {
+                    document.querySelector('#num1').style.background = "red";
+                    document.getElementById("score1").innerHTML = score;
+                    question_num_increase()
+                }
+            }
 
             document.querySelector('#num2').onclick = function() {
-                document.querySelector('#num1').style.background = "white";
-                document.querySelector('#num2').style.background = "red";
-                document.querySelector('#num3').style.background = "white";
-                document.querySelector('#num4').style.background = "white";
-                document.getElementById("score1").innerHTML = score;
-            };
+                if(question_number < 1) {
+                    document.querySelector('#num2').style.background = "red";
+                    document.getElementById("score1").innerHTML = score;
+                    question_num_increase()
+                }
+            }
 
             document.querySelector('#num3').onclick = function() {
-                document.querySelector('#num1').style.background = "white";
-                document.querySelector('#num2').style.background = "white";
-                document.querySelector('#num3').style.background = "green";
-                document.querySelector('#num4').style.background = "white";
-                increase();
-                document.getElementById("score1").innerHTML = score;
-            };
+                if(question_number < 1) {
+                    document.querySelector('#num3').style.background = "green";
+                    question_num_increase()
+                    increase()
+                    document.getElementById("score1").innerHTML = score;
+                    document.getElementById("score2").innerHTML = question_number;
+
+                }
+            }
 
             document.querySelector('#num4').onclick = function() {
-                document.querySelector('#num1').style.background = "white";
-                document.querySelector('#num2').style.background = "white";
-                document.querySelector('#num3').style.background = "white";
-                document.querySelector('#num4').style.background = "red";
-                document.getElementById("score1").innerHTML = score;
-            };
+                if(question_number < 1) {
+                    document.querySelector('#num4').style.background = "red";
+                    document.getElementById("score1").innerHTML = score;
+                    question_num_increase()
+                }
+
+            }
 
         </script>
     </body>
