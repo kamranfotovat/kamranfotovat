@@ -100,5 +100,3 @@ def quiz():
 
     else:
         return render_template("quiz.html")
-
-
